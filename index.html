@@ -4,7 +4,88 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- CSS divs -->
+    <link rel="stylesheet" href="css/account/account.css" />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Digital Wallet JS</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Digital Wallet with JS</h1>
+    </header>
+    <main class="container">
+      <div class="client">
+        <div class="client__fields">
+          <label for="">Nome completo</label>
+          <input type="text" /> <br />
+
+          <label for="">CPF</label>
+          <input type="text" /> <br />
+
+          <label for="">Data de nascimento</label>
+          <input type="date" /> <br />
+
+          <label for="">Bank</label>
+          <input type="text" /> <br />
+
+          <label for="">Agency</label>
+          <input type="text" /> <br />
+
+          <label for="">Account Number</label>
+          <input type="text" /> <br />
+        </div>
+        <div class="client__info">
+          <h3 id="client__info__name"></h3>
+          <p>info x</p>
+          <p>info x</p>
+          <p>info x</p>
+          <p>info x</p>
+        </div>
+      </div>
+
+      <div class="account">
+        <div class="account__screem">
+          <div class="account__screem__info">
+            <h5>Bank name</h5>
+            <h5>Agency - AccountNumber</h5>
+            <h3>Você tem 0 reais</h3>
+          </div>
+
+          <div class="account__screem__operations">
+            <label for="">WithDraw</label>
+            <input type="text" />
+            <button>Confirm</button> <br />
+
+            <label for="">Deposit</label>
+            <input type="text" />
+            <button>Confirm</button> <br />
+          </div>
+        </div>
+        <div class="account__bankStatement">
+          <ul>
+            <li>Você realizou tal acão</li>
+            <li>Você realizou tal acão</li>
+            <li>Você realizou tal acão</li>
+            <li>Você realizou tal acão</li>
+            <li>Você realizou tal acão</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- <footer class="footer">Developed by Raffael Eloi</footer> -->
+  </body>
 </html>
