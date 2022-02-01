@@ -1,0 +1,8 @@
+.account__bankStatement {
+  background-color: khaki;
+  border-radius: 5px;
+}
+
+.account__bankStatement ul {
+  list-style-type: none;
+}
