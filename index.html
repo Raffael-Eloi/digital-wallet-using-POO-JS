@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- CSS divs -->
+    <link rel="stylesheet" href="css/client/client.css" />
     <link rel="stylesheet" href="css/account/account.css" />
 
     <!-- Google font -->
@@ -25,35 +26,83 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="header__title">Digital Wallet with JS</h1>
+      <h1 class="header__title">Digital Wallet with JS using POO</h1>
     </header>
     <main class="container">
       <div class="client">
-        <div class="client__fields">
-          <label for="">Nome completo</label>
-          <input type="text" /> <br />
-
-          <label for="">CPF</label>
-          <input type="text" /> <br />
-
-          <label for="">Data de nascimento</label>
-          <input type="date" /> <br />
-
-          <label for="">Bank</label>
-          <input type="text" /> <br />
-
-          <label for="">Agency</label>
-          <input type="text" /> <br />
-
-          <label for="">Account Number</label>
-          <input type="text" /> <br />
-        </div>
         <div class="client__info">
-          <h3 id="client__info__name"></h3>
-          <p>info x</p>
-          <p>info x</p>
-          <p>info x</p>
-          <p>info x</p>
+          <h3 id="client__info__name">Name of the person</h3>
+          <p>cpf - data de nascimento</p>
+          <img
+            src="https://picsum.photos/300/300"
+            alt="profile photo"
+            class="client__info__photo"
+          />
+          <p>salário</p>
+        </div>
+        <div class="client__fields">
+          <form action="">
+            <label for="name">Full name</label><br />
+            <input
+              type="text"
+              id="name"
+              required
+              placeholder="type your full name"
+            />
+            <br />
+
+            <label for="cpf">CPF</label><br />
+            <input
+              type="text"
+              id="cpf"
+              required
+              placeholder="Type your identification"
+            />
+            <br />
+
+            <label for="birth">Birth</label><br />
+            <input type="date" id="birth" required /> <br />
+
+            <label for="salary">Salary</label><br />
+            <input
+              type="text"
+              id="salary"
+              required
+              placeholder="Type your salary"
+            />
+            <br />
+
+            <hr />
+
+            <label for="bank">Bank</label><br />
+            <input
+              type="text"
+              id="bank"
+              required
+              placeholder="Type your bank name"
+            />
+            <br />
+
+            <label for="agency">Agency</label><br />
+            <input
+              type="text"
+              id="agency"
+              required
+              placeholder="Type your agency"
+            />
+            <br />
+
+            <label for="accountNumber">Account Number</label><br />
+            <input
+              type="text"
+              id="accountNumber"
+              required
+              placeholder="Type your account number"
+            />
+            <br />
+
+            <button>Submit</button>
+          </form>
         </div>
       </div>
 
@@ -62,7 +111,7 @@
           <div class="account__screem__info">
             <h5>Bank name</h5>
             <h5>Agency - AccountNumber</h5>
-            <h3>Você tem 0 reais</h3>
+            <h3>You have - R$0,00</h3>
           </div>
 
           <div class="account__screem__operations">
@@ -77,15 +126,15 @@
         </div>
         <div class="account__bankStatement">
           <ul>
-            <li>Você realizou tal acão</li>
-            <li>Você realizou tal acão</li>
-            <li>Você realizou tal acão</li>
-            <li>Você realizou tal acão</li>
-            <li>Você realizou tal acão</li>
+            <li>Você realizou tal acão <span>balance</span></li>
+            <li>Você realizou tal acão <span>balance</span></li>
+            <li>Você realizou tal acão <span>balance</span></li>
+            <li>Você realizou tal acão <span>balance</span></li>
+            <li>Você realizou tal acão <span>balance</span></li>
           </ul>
         </div>
       </div>
     </main>
-    <!-- <footer class="footer">Developed by Raffael Eloi</footer> -->
+    <footer class="footer"><h4>Developed by Raffael Eloi</h4></footer>
   </body>
 </html>

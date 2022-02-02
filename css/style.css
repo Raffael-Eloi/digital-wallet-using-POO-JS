@@ -18,3 +18,9 @@ body {
 /* div account */
 
 /* Footer */
+.footer {
+  background-color: rgb(222, 226, 226);
+  font-weight: bold;
+  padding: 2rem;
+  text-align: center;
+}

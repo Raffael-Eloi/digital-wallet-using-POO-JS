@@ -1,0 +1,48 @@
+/* Information */
+.client__info {
+  /* display: none; */
+}
+
+.client__info__photo {
+  border-radius: 50%;
+}
+
+/* Form */
+.client__fields {
+  /* display: none; */
+  margin-bottom: 3rem;
+  padding: 1rem;
+  text-align: start;
+}
+
+.client__fields form label {
+  font-weight: bold;
+}
+
+.client__fields form input {
+  border-radius: 5px;
+  border: 1px solid #333;
+  margin-bottom: 0.5rem;
+  padding: 0.1rem;
+  width: 20rem;
+}
+
+.client__fields form input:active {
+  border: 1px solid #333;
+}
+
+.client__fields form button {
+  background-color: #04724d;
+  border: none;
+  border-radius: 5px;
+  color: #fdfdfd;
+  font-weight: bold;
+  padding: 0.35rem 0.5rem;
+  width: 20rem;
+}
+
+.client__fields form button:hover {
+  box-shadow: 2px 2px 2px gray;
+  color: #fdfdfdce;
+  cursor: pointer;
+}
