@@ -109,22 +109,32 @@
       <div class="account">
         <div class="account__screem">
           <div class="account__screem__info">
-            <h5>Bank name</h5>
-            <h5>Agency - AccountNumber</h5>
-            <h3>You have - R$0,00</h3>
+            <div class="account__screem__info__bankInfo">
+              <h5>Bank name</h5>
+              <h5>Agency - AccountNumber</h5>
+            </div>
+            <div clclass="account__screem__info__balanceInfo">
+              <h3>You have - R$0,00</h3>
+            </div>
           </div>
 
           <div class="account__screem__operations">
-            <label for="">WithDraw</label>
-            <input type="text" />
-            <button>Confirm</button> <br />
+            <label for="withDraw">WithDraw</label>
+            <input type="text" id="withDraw" />
+            <button>
+              <img src="https://img.icons8.com/fluency/24/000000/checked.png" />
+            </button>
+            <br />
 
-            <label for="">Deposit</label>
-            <input type="text" />
-            <button>Confirm</button> <br />
+            <label for="deposit">Deposit</label>
+            <input type="text" id="deposit" />
+            <button>
+              <img src="https://img.icons8.com/fluency/24/000000/checked.png" />
+            </button>
           </div>
         </div>
         <div class="account__bankStatement">
+          <h4>Bank statement</h4>
           <ul>
             <li>Você realizou tal acão <span>balance</span></li>
             <li>Você realizou tal acão <span>balance</span></li>

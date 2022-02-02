@@ -1,6 +1,50 @@
+.account__screem {
+  height: 50%;
+}
+
+.account__screem__info__bankInfo {
+  margin-bottom: 5rem;
+}
+
+/* .account__screem__info__balanceInfo {
+  margin-bottom: 5rem;
+} */
+
+.account__screem__operations {
+  align-items: center;
+  display: flex;
+  margin-top: 5rem;
+}
+
+.account__screem__operations label {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-right: 0.2rem;
+}
+
+.account__screem__operations input {
+  border-radius: 5px;
+  border: 1px solid #333;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 1rem;
+  width: 10rem;
+}
+
+.account__screem__operations button {
+  background-color: #04724d;
+  border: none;
+  border-radius: 5px;
+  color: #fdfdfd;
+  font-weight: bold;
+  margin-right: 1rem;
+  margin-bottom: 0.45rem;
+}
+
 .account__bankStatement {
   background-color: khaki;
   border-radius: 5px;
+  margin-top: 5rem;
+  padding: 1rem;
 }
 
 .account__bankStatement ul {
