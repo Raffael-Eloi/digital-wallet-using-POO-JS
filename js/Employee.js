@@ -6,11 +6,11 @@ export class Employee extends Person {
     this.salary = salary;
   }
 
-  get salary() {
-    return this.salary;
-  }
+  // get salary() {
+  //   return this.salary;
+  // }
 
-  set salary(newSalary) {
-    this.salary = newSalary;
-  }
+  // set salary(newSalary) {
+  //   this.salary = newSalary;
+  // }
 }
