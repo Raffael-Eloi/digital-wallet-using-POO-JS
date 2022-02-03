@@ -1,6 +1,6 @@
 /* Information */
 .client__info {
-  display: block;
+  display: none;
 }
 
 .client__info__photo {

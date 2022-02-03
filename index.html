@@ -80,7 +80,7 @@
 
             <hr />
 
-            <!-- <label for="bank">Bank</label><br />
+            <label for="bank">Bank</label><br />
             <input
               type="text"
               id="bank"
@@ -105,9 +105,8 @@
               required
               placeholder="Type your account number"
             />
-            <br /> -->
-
-            <button id="buttonSubmit">Submit</button>
+            <br />
+            <button id="clientButtonSubmit">Submit</button>
           </form>
         </div>
       </div>
@@ -116,11 +115,16 @@
         <div class="account__screem">
           <div class="account__screem__info">
             <div class="account__screem__info__bankInfo">
-              <h5>Bank name</h5>
-              <h5>Agency - AccountNumber</h5>
+              <h5 id="account__info__bank"></h5>
+              <h5>
+                <span id="account__info__agency"></span> -
+                <span id="account__info__accountNumber"></span>
+              </h5>
             </div>
             <div clclass="account__screem__info__balanceInfo">
-              <h3>You have - R$0,00</h3>
+              <h3>
+                You have - R$ <span id="account__info__balance">0,00</span>
+              </h3>
             </div>
           </div>
 
