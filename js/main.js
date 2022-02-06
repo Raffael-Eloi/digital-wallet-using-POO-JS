@@ -1,6 +1,19 @@
 import { CheckingAccount } from './CheckingAccount.js';
 import { Employee } from './Employee.js';
 
+function clear() {
+  document.querySelector('#withDraw').value = '';
+  document.querySelector('#deposit').value = '';
+}
+
+function getWithDrawValue() {
+  return parseInt(document.querySelector('#withDraw').value);
+}
+
+function getDepositValue() {
+  return parseInt(document.querySelector('#deposit').value);
+}
+
 function showHiddenClientDiv() {
   const divClientInfo = document.querySelector('.client__info');
   const divClientFields = document.querySelector('.client__fields');
@@ -38,6 +51,8 @@ function fillFieldsAccount(objAccount) {
     objAccount.agency;
   document.querySelector('#account__info__accountNumber').innerHTML =
     objAccount.accountNumber;
+  document.querySelector('#account__info__balance').innerHTML =
+    objAccount.balance;
 }
 
 function createNewClient() {
@@ -51,23 +66,66 @@ function createNewClient() {
   // fillFieldsClient(client);
 }
 
-function createNewAccount() {
+function createNewAccount(status, actionType) {
   const bank = document.querySelector('#bank').value;
   const agency = document.querySelector('#agency').value;
   const accountNumber = document.querySelector('#accountNumber').value;
+  if (status == 'first') {
+    const account = new CheckingAccount(bank, agency, accountNumber, 0);
+    localStorage.setItem('account', JSON.stringify(account));
+    localStorage.setItem('previousBalance', 0);
+  } else {
+    console.log(localStorage);
+    let previsousBalanceLocalStorage = parseInt(
+      localStorage.getItem('previousBalance')
+    );
+    let currentBalance = 0;
+    let invalidAction = false;
+    if (actionType == 'withdraw') {
+      if (previsousBalanceLocalStorage >= getWithDrawValue()) {
+        currentBalance = previsousBalanceLocalStorage -= getWithDrawValue();
+      } else {
+        alert(`You don't have ballance enough !`);
+        invalidAction = true;
+        currentBalance = previsousBalanceLocalStorage;
+      }
+    } else {
+      currentBalance = previsousBalanceLocalStorage += getDepositValue();
+    }
 
-  const account = new CheckingAccount(bank, agency, accountNumber);
-  localStorage.setItem('account', JSON.stringify(account));
+    console.log(localStorage.getItem(localStorage.account.bank));
+    const account = new CheckingAccount(
+      localStorage.getItem('bank'),
+      localStorage.getItem('agency'),
+      localStorage.getItem('accountNumber'),
+      currentBalance
+    );
+    localStorage.setItem('previousBalance', currentBalance);
+    localStorage.setItem('account', JSON.stringify(account));
+    !invalidAction ? clear() : null;
+  }
   // fillFieldsAccount(account);
   fillAllTheFields();
 }
+
+const buttonDeposit = document.querySelector('#depositButton');
+buttonDeposit.addEventListener('click', event => {
+  event.preventDefault();
+  createNewAccount('change', 'deposit');
+});
+
+const buttonwithDraw = document.querySelector('#withDrawButton');
+buttonwithDraw.addEventListener('click', event => {
+  event.preventDefault();
+  createNewAccount('change', 'withdraw');
+});
 
 const buttonSubmit = document.querySelector('#clientButtonSubmit');
 buttonSubmit.addEventListener('click', event => {
   event.preventDefault();
   document.querySelector('.client__info').style.display = 'block';
   createNewClient();
-  createNewAccount();
+  createNewAccount('first');
   document.querySelector('.client__fields').style.display = 'none';
 });
 

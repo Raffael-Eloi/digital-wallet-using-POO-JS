@@ -1,8 +1,9 @@
 export class Account {
-  constructor(bank, agency, accountNumber) {
+  constructor(bank, agency, accountNumber, balance) {
     this.bank = bank;
     this.agency = agency;
     this.accountNumber = accountNumber;
+    this.balance = balance;
   }
 
   // Agency

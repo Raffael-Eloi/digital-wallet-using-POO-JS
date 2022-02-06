@@ -1,14 +1,12 @@
 import { Account } from './Account.js';
 
 export class CheckingAccount extends Account {
-  static _balance = 0;
-
-  constructor(bank, agency, accountNumber) {
-    super(bank, agency, accountNumber);
+  constructor(bank, agency, accountNumber, balance) {
+    super(bank, agency, accountNumber, balance);
   }
 
-  get balance() {
-    return this._balance;
+  currentBalance() {
+    return this.balance;
   }
 
   // set balance(newBalance) {
@@ -16,12 +14,12 @@ export class CheckingAccount extends Account {
   // }
 
   withDraw(value) {
-    if (this._balance >= value) {
-      this._balance -= value;
+    if (this.balance >= value) {
+      this.balance -= value;
     }
   }
 
   deposit(value) {
-    this._balance += value;
+    this.balance += value;
   }
 }

@@ -38,6 +38,12 @@
   font-weight: bold;
   margin-right: 1rem;
   margin-bottom: 0.45rem;
+  margin-left: 0.2rem;
+}
+
+.account__screem__operations button:hover {
+  box-shadow: 2px 2px 2px gray;
+  cursor: pointer;
 }
 
 .account__bankStatement {
