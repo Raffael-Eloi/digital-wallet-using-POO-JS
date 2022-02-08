@@ -1,7 +1,7 @@
 import { CheckingAccount } from './CheckingAccount.js';
 import { Employee } from './Employee.js';
 
-function addBankStatementToLocalStorage(li) {
+function addBankStatementToLocalStorage(li, liBalance) {
   let ulBankStatement = document.getElementById('bankStatement');
   let bankStatementArray = [];
   if (localStorage.bankStatement) {
@@ -13,9 +13,13 @@ function addBankStatementToLocalStorage(li) {
   }
   if (li != 'reload') {
     bankStatementArray.push(li);
+    bankStatementArray.push(liBalance);
     let liElement = document.createElement('li');
+    let liElementBalance = document.createElement('li');
     liElement.appendChild(document.createTextNode(li));
+    liElementBalance.appendChild(document.createTextNode(liBalance));
     ulBankStatement.appendChild(liElement);
+    ulBankStatement.appendChild(liElementBalance);
   }
   if (bankStatementArray != 0 && li == 'reload') {
     bankStatementArray.map(item => {
@@ -38,12 +42,16 @@ function refreshBankStatement(operationType, value) {
     ? (currentBalance += value)
     : (currentBalance -= value);
   let li = document.createElement('li');
+  let liBalance = document.createElement('li');
   li.appendChild(
     document.createTextNode(
-      `You did a ${operationType} of R$${value} at ${currentDate} - Balance now: R$${currentBalance}`
+      `You did a ${operationType} of R$${value} at ${currentDate}`
     )
   );
-  addBankStatementToLocalStorage(li.textContent);
+  liBalance.appendChild(
+    document.createTextNode(`Balance now: R$${currentBalance}`)
+  );
+  addBankStatementToLocalStorage(li.textContent, liBalance.textContent);
 }
 
 function formatAccountInformation() {
@@ -87,7 +95,7 @@ function showHiddenClientDiv() {
   if (localStorage.client != null && localStorage.account != null) {
     fillAllTheFields();
   }
-  addBankStatementToLocalStorage('reload');
+  addBankStatementToLocalStorage('reload', '');
 }
 
 function fillAllTheFields() {
