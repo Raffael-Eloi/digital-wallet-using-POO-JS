@@ -1,6 +1,66 @@
 import { CheckingAccount } from './CheckingAccount.js';
 import { Employee } from './Employee.js';
 
+function addBankStatementToLocalStorage(li) {
+  let ulBankStatement = document.getElementById('bankStatement');
+  let bankStatementArray = [];
+  if (localStorage.bankStatement) {
+    let bankStatementWithSplit = localStorage.bankStatement;
+    let arrayForMap = bankStatementWithSplit.split(',');
+    arrayForMap.map(item => {
+      bankStatementArray.push(item);
+    });
+  }
+  if (li != 'reload') {
+    bankStatementArray.push(li);
+    let liElement = document.createElement('li');
+    liElement.appendChild(document.createTextNode(li));
+    ulBankStatement.appendChild(liElement);
+  }
+  if (bankStatementArray != 0 && li == 'reload') {
+    bankStatementArray.map(item => {
+      let li = document.createElement('li');
+      li.appendChild(document.createTextNode(item));
+      ulBankStatement.appendChild(li);
+    });
+  }
+  localStorage.setItem('bankStatement', bankStatementArray);
+}
+
+function refreshBankStatement(operationType, value) {
+  let currentDate = new Date().toString();
+  currentDate = currentDate.replace(
+    'GMT-0300 (Horário Padrão de Brasília)',
+    ''
+  );
+  let currentBalance = parseInt(localStorage.previousBalance);
+  operationType == 'deposit'
+    ? (currentBalance += value)
+    : (currentBalance -= value);
+  let li = document.createElement('li');
+  li.appendChild(
+    document.createTextNode(
+      `You did a ${operationType} of R$${value} at ${currentDate} - Balance now: R$${currentBalance}`
+    )
+  );
+  addBankStatementToLocalStorage(li.textContent);
+}
+
+function formatAccountInformation() {
+  let localStorageCurrentAccount = localStorage.account;
+  let localStorageAccountArray = localStorageCurrentAccount.split(',');
+  let localStorageAccountInfo = [];
+  localStorageAccountArray.map(item =>
+    localStorageAccountInfo.push(item.split(':'))
+  );
+  let formatedAccountInformation = {
+    bank: localStorageAccountInfo[0][1].slice(1, length - 1),
+    agency: localStorageAccountInfo[1][1].slice(1, length - 1),
+    accountNumber: localStorageAccountInfo[2][1].slice(1, length - 1)
+  };
+  return formatedAccountInformation;
+}
+
 function clear() {
   document.querySelector('#withDraw').value = '';
   document.querySelector('#deposit').value = '';
@@ -27,6 +87,7 @@ function showHiddenClientDiv() {
   if (localStorage.client != null && localStorage.account != null) {
     fillAllTheFields();
   }
+  addBankStatementToLocalStorage('reload');
 }
 
 function fillAllTheFields() {
@@ -74,8 +135,8 @@ function createNewAccount(status, actionType) {
     const account = new CheckingAccount(bank, agency, accountNumber, 0);
     localStorage.setItem('account', JSON.stringify(account));
     localStorage.setItem('previousBalance', 0);
+    localStorage.setItem('bankStatement', '');
   } else {
-    console.log(localStorage);
     let previsousBalanceLocalStorage = parseInt(
       localStorage.getItem('previousBalance')
     );
@@ -84,6 +145,7 @@ function createNewAccount(status, actionType) {
     if (actionType == 'withdraw') {
       if (previsousBalanceLocalStorage >= getWithDrawValue()) {
         currentBalance = previsousBalanceLocalStorage -= getWithDrawValue();
+        refreshBankStatement('withdraw', getWithDrawValue());
       } else {
         alert(`You don't have ballance enough !`);
         invalidAction = true;
@@ -91,13 +153,14 @@ function createNewAccount(status, actionType) {
       }
     } else {
       currentBalance = previsousBalanceLocalStorage += getDepositValue();
+      refreshBankStatement('deposit', getDepositValue());
     }
 
-    console.log(localStorage.getItem(localStorage.account.bank));
+    const accountInfo = formatAccountInformation();
     const account = new CheckingAccount(
-      localStorage.getItem('bank'),
-      localStorage.getItem('agency'),
-      localStorage.getItem('accountNumber'),
+      accountInfo.bank,
+      accountInfo.agency,
+      accountInfo.accountNumber,
       currentBalance
     );
     localStorage.setItem('previousBalance', currentBalance);
