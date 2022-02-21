@@ -3,12 +3,14 @@ import { Person } from './Person.js';
 export class Employee extends Person {
   constructor(name, cpf, birth, salary) {
     super(name, cpf, birth);
-    this._salary = salary;
-    Object.freeze(this);
+    this.salary = salary;
   }
 
-  // Salary
-  get salary() {
-    return this._salary;
-  }
+  // get salary() {
+  //   return this.salary;
+  // }
+
+  // set salary(newSalary) {
+  //   this.salary = newSalary;
+  // }
 }
