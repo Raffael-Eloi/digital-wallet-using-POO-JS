@@ -1,6 +1,7 @@
-class View {
+export class View {
   constructor(selector) {
-    this._element = document.querySelector(selector);
+    // this._element = document.querySelector(selector);
+    this._element = document.querySelector(`[id="${bankStatement}"]`);
   }
 
   update(model) {

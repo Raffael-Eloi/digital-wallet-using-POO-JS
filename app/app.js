@@ -6,8 +6,8 @@ const clientController = new ClientController();
 
 const $ = document.querySelector.bind(document);
 
-$('#depositButton').addEventListener('click', bankController.deposit.bind(controller)); // TESTAR SEM CONTROLLER PARA VER
+$('#formDigitalWallet').addEventListener('submit', clientController.add.bind(clientController));
+$('#formDigitalWallet').addEventListener('submit', bankController.add.bind(bankController));
 
-$('#withDrawButton').addEventListener('click', bankController.withDraw.bind(controller));
-
-$('#clientButtonSubmit').addEventListener('click', clientController.VERIFYWHATISTHENAME.bind(clientController));
+$('#depositButton').addEventListener('click', bankController.deposit.bind(bankController));
+$('#withDrawButton').addEventListener('click', bankController.withDraw.bind(bankController));
