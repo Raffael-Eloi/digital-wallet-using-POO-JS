@@ -1,6 +1,11 @@
 import { View } from './View.js';
 
 export class ClientView extends View{
+
+  update(model) {
+    this.template(model);
+  }
+
   template(model) {
     const $ = document.querySelector.bind(document);
     $('#client__info__name').innerHTML = model.name;

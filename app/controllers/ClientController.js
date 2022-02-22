@@ -3,8 +3,8 @@ import { ClientView } from '../ui/views/ClientView.js';
 
 export class ClientController {
   constructor() {
-    const $ = document.querySelector.bind(document);
     this._inputName = $('#name').value;
+    console.log('input: ', this._inputName);
     this._inputCpf = $('#cpf').value;
     this._inputBirth = $('#birth').value;
     this._inputSalary = $('#salary').value;
@@ -13,6 +13,10 @@ export class ClientController {
   add(event) {
     event.preventDefault();
     const employee = this._createEmployee();
+    const $ = document.querySelector.bind(document);
+    console.log('input: ', this._inputName);
+    console.log(`input name: ${this._inputName} - input cpf: ${this._inputCpf} - input birth: ${this._inputBirth} - input salary: ${this._inputSalary}`);
+    console.log(employee);
     this._fillClientFields(employee);
     this._hideFormShowDisplayClient();
   }
@@ -27,7 +31,8 @@ export class ClientController {
   }
 
   _fillClientFields(employeeClass) {
-    return new ClientView(employeeClass);
+    const clientView = new ClientView();
+    clientView.update(employeeClass);
   }
   
   _hideFormShowDisplayClient() {
