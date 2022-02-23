@@ -4,6 +4,7 @@
   "description": "digital wallet using poo",
   "main": "index.js",
   "scripts": {
+    "build": "babel src -d lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Raffael-Eloi/digital-wallet-using-POO-JS/issues"
   },
-  "homepage": "https://github.com/Raffael-Eloi/digital-wallet-using-POO-JS#readme"
+  "homepage": "https://github.com/Raffael-Eloi/digital-wallet-using-POO-JS#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5"
+  }
 }
